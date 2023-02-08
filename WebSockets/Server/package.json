@@ -1,0 +1,18 @@
+{
+  "name": "websockets_server",
+  "version": "1.0.0",
+  "description": "To understand websockets",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "Lokesh Vyavhare",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
