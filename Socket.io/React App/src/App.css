@@ -1,12 +1,7 @@
 .App {
-  text-align: center;
-  color: #fff;
+
 }
 .App *{
-  color: rgb(11, 239, 255);
-  font-family: cursive;
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
 }
 

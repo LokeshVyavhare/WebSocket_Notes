@@ -35,22 +35,9 @@ const io = new Server(httpServer, {
 
 let messageArray = [];
 
-io.on('connection', (socket)=>{
-    console.log('new user  connected');
-    socket.emit('recieve_message', {messages:messageArray});
-    socket.broadcast.emit('recieve_message', {messages:messageArray});
-
-    socket.on('send_message', (data)=>{
-        const {message} = data;
-
-        messageArray.push(message);
-
-        socket.emit('recieve_message', {messages:messageArray});
-        socket.broadcast.emit('recieve_message', {messages:messageArray});
-    })
-
-    socket.on('disconnect', ()=>{
-        console.log('disconnected')
+io.on('connection', (socket)=>{     
+    socket.on('login', ()=>{
+        console.log("User logged In")
     })
 });
 

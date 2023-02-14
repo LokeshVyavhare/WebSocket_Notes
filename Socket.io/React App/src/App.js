@@ -1,15 +1,17 @@
-// import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { io } from 'socket.io-client';
-// import { Socket_I } from './Components/Socket-I/Socket_I';
-import { Chats } from './Components/Chats/Chats';
-export const socket = io.connect('http://localhost:8080');
+import Signin from './Components/Auth/Signin';
+import SignUp from './Components/Auth/SignUp';
+import Home from './Components/Home/Home';
 
 function App() {
-
   return (
     <div className="App">
-      <Chats/>
+      <Routes>
+        <Route path='/' element={<Home/>}></Route>
+        <Route path='/signin' element={<Signin/>}></Route>
+        <Route path='/signup' element={<SignUp/>}></Route>
+      </Routes>
     </div>
   );
 }

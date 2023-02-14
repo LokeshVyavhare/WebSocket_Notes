@@ -6,10 +6,10 @@ import {
     Heading,
     Button
 } from "@chakra-ui/react";
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { Auth_Sign_UP } from "../../Redux/AuthReducer/Action";
+import { Auth_Sign_In } from "../../Redux/AuthReducer/Action";
 
 
 const styles = {
@@ -34,7 +34,7 @@ export default () => {
         setFormData((prev)=>({
             ...prev,
             email:target.value
-        }))
+        }));
         target.style.borderColor='rgb(200,200,200)';
     }
     const handlePasswordChange = ({target}) => {
@@ -45,11 +45,11 @@ export default () => {
         target.style.borderColor='rgb(200,200,200)';
     }
     const onSuccess = () => {
-        alert('Account Created Successfully');
-        navigator('/signin')
+        alert('Login Successful');
+        navigator('/')
     }
     const onError = () => {
-        alert('Something went wrong please try again!');
+        alert('Login UnSuccessful');
     }
     const handleSubmit = () =>{
         if(formData.email===''){
@@ -57,22 +57,23 @@ export default () => {
             emailInput.current.style.borderColor='red';
             return;
         }else{
-
+            
         }
         if(formData.password===''){
             passInput.current.focus();
             passInput.current.style.borderColor='red';
             return;
         }
-        dispatch(Auth_Sign_UP(formData, onSuccess, onError));
+        dispatch(Auth_Sign_In(formData, onSuccess, onError));
+        
     }
-    return <Box p='10px 0' pt='55px' backgroundColor={'rgb(245,245,245)'} height='100vh'>
-        <Heading textAlign={'center'} w='fit-content' m='0px auto 55px' p='10px 75px' borderBottom={'2px solid skyblue'}>SIGN UP</Heading>
+    return <Box p='10px 0' backgroundColor={'rgb(245,245,245)'} height='100vh' pt='55px'>
+        <Heading textAlign={'center'} w='fit-content' m='0px auto 55px' p='10px 75px' borderBottom={'2px solid skyblue'}>SIGN IN</Heading>
         
 
 
-        <FormControl >
-            <Box w={['550px']} m='15px auto' mt='50px' border='1px solid rgb(200,200,200)' backgroundColor={'#fff'} textAlign={'center'} p='75px' borderRadius={'20px'} boxShadow='xl'>
+        <FormControl>
+            <Box  w={['550px']} m='15px auto' mt='50px' border='1px solid rgb(200,200,200)' backgroundColor={'#fff'} textAlign={'center'} p='75px' borderRadius={'20px'} boxShadow='xl'>
 
 
                 <Input
@@ -82,7 +83,6 @@ export default () => {
                     onChange={handleEmailChange}
                     {...styles.input}
                     ref={emailInput}
-                    
                 />
 
                 <Input
@@ -95,11 +95,11 @@ export default () => {
                 />
 
 
-                <Button colorScheme='blue' onClick={handleSubmit}>Create Account</Button>
+                <Button colorScheme='blue' onClick={handleSubmit}>Sign In</Button>
             </Box>
         </FormControl>
         <Text textAlign={'center'} mt='55px'>
-            Already Have Account? <Link to='/signin' style={{color:"blue", textDecoration:"underline"}}>Sign In</Link>
+            Don't Have Account? <Link to='/signup' style={{color:"blue", textDecoration:"underline"}}>Create Account</Link>
         </Text>
     </Box>
 }

@@ -1,0 +1,6 @@
+.a{
+    border-bottom: 1px solid #00000000;
+}
+.a:hover{
+    border-bottom: 1px solid #fff;
+}

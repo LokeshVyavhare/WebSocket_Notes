@@ -20,7 +20,7 @@ app.post('/login', async(req, res)=>{
     try{
         let user =await User.findOne({email, password});
         if(user){
-            const token = jwt.sign({email, id:user._id}, process.env.JWT_Secret, {
+            const token = jwt.sign({email, id:user._id}, "JWT_Secret", {
                 expiresIn:"3 days"
             })
 
